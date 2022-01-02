@@ -1,0 +1,16 @@
+.header{
+    background: transparent;   
+    padding-top: 1.5rem;
+    font-family: inherit;
+    &__logo{
+        width: 7.5rem;
+
+        &--img{
+            width:100%;
+        }
+    }
+
+    &__nav--container{
+        gap: 3rem;
+    }
+}
