@@ -1,0 +1,52 @@
+.quizQuesCard{
+    &__topic{
+        text-align: start;
+
+        &--container{
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 1.2rem;
+        }
+
+        &--heading{
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 21px;
+            color: #B3A9A9;
+        }
+
+        &--sub-heading{
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 21px;
+            color: #2F2F2F;
+        }
+
+    }
+
+    &__timeCounter{
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        position: relative;
+        background: rgba(47, 47, 47, 0.36);
+        border-radius: 5px;
+        color: #FFFFFF;
+        padding: 0.2rem 1rem;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center;
+
+        &::after {
+            content: ':';
+            position: absolute;
+            left: 3.2rem;
+        }
+
+        &--min,&--sec {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

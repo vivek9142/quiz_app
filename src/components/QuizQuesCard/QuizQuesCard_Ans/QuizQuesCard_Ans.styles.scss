@@ -1,0 +1,36 @@
+.QuizQuesCard_Ans{
+    display: flex;
+    justify-content: space-between;
+    text-align: start;
+    align-items: center;
+    color: #fff;
+
+    &--container {
+        background: linear-gradient(91.23deg, #6776FF 0%, #80FFDB 131.71%);
+        border-radius: 0px 0px 5px 5px;
+        padding:1.5rem;
+    }
+
+    &--heading {
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 21px;
+        color: #FFFFFF;
+        text-transform: uppercase;
+    }
+
+    &--form-input {
+        width: 19rem;
+        height: 2.5rem;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        padding: 0.5rem;
+    }
+
+    &--soln-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+}

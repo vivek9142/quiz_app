@@ -1,0 +1,22 @@
+.QuizQuesCard_Ques{
+    &--container {
+        text-align: start;
+        padding: 1.4rem 1rem 3rem;
+        background: rgba(128, 255, 219, 0.2);
+    }
+
+    &--ques-num{
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        color: #B3A9A9;
+    }
+
+    &--ques-text{
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #000000;
+    }
+}
+
