@@ -8,7 +8,7 @@ const QuizQuesCard_Ans = props => {
                 <div className="QuizQuesCard_Ans--main--container">
                     <h3 className="QuizQuesCard_Ans--heading">Answer</h3>
                     <form className="QuizQuesCard_Ans--form">
-                        <input type="text" className="QuizQuesCard_Ans--form-input" />
+                        <input type="text" placeholder='Type Answer...' className="QuizQuesCard_Ans--form-input" />
                     </form>
                 </div>
 
