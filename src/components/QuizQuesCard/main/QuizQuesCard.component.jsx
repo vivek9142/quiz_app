@@ -5,13 +5,13 @@ import QuizQuesCard_Ques from '../QuizQuesCard_Ques/QuizQuesCard_Ques.component'
 import QuizQuesCard_Ans from '../QuizQuesCard_Ans/QuizQuesCard_Ans.component';
 import './QuizQuesCard.styles.scss';
 
-const QuizQuesCard = props => {
+const QuizQuesCard = ({data,...props}) => {
     return (
         <>
         <Card className="quizQuesCard__container">
               <Card.Body className='quizQuesCard__body'>
-                    <QuizQuesCard_Topic/>
-                    <QuizQuesCard_Ques/>
+                    <QuizQuesCard_Topic topic={data.category}/>
+                    <QuizQuesCard_Ques id={data._id} question={data.question}/>
                     <QuizQuesCard_Ans/>
               </Card.Body>
           </Card>

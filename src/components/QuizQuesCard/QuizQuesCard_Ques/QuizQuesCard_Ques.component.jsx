@@ -1,15 +1,15 @@
 import './QuizQuesCard_Ques.styles.scss';
 
 
-const QuizQuesCard_Ques = props => {
+const QuizQuesCard_Ques = ({id,question}) => {
     return(
         <div className='QuizQuesCard_Ques--container'>
             <div className="QuizQuesCard_Ques">
                 <div className="QuizQuesCard_Ques--ques-num">
-                QUESTION 1 of 6
+                QUESTION {id} of 6
                 </div>
                 <div className="QuizQuesCard_Ques--ques-text">
-                The process of creating or improving a product or service is refered to as
+                {question}
                 </div>
             </div>
         </div>

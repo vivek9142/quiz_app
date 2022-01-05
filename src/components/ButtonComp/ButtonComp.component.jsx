@@ -1,9 +1,9 @@
 import { Button } from "react-bootstrap";
 import './ButtonComp.styles.scss';
 
-const ButtonComp = ({children}) => {
+const ButtonComp = ({children,...props}) => {
     return (
-        <Button className="button">{children}</Button>
+        <Button className="button" {...props}>{children}</Button>
     )
 }
 
