@@ -6,8 +6,8 @@ import './QuizCard.styles.scss';
 const QuizCard = (props) => {
     return (
         <div className="quiz__card--container">
-            <QuizStart/>
-            <QuizQuesCard/>
+            {/* <QuizStart/> */}
+            {/* <QuizQuesCard/> */}
             <QuizEndCard/>
         </div>
     )
