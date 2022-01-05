@@ -1,9 +1,15 @@
 .button{
     border: 2px solid #FFFFFF;
-    box-sizing: border-box;
     border-radius: 5px;
     background: transparent;
     color: #fff;
     padding: 0.3rem 1.5rem;
     font-weight: 500;
+
+    &:hover,&:active,&:focus{
+        border: 2px solid #FFFFFF;
+        border-radius: 5px;
+        background: transparent;
+        color: #fff;
+    }
 }
