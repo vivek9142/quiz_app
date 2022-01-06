@@ -1,12 +1,16 @@
-import { useState,useEffect} from 'react';
-import { useSelector } from 'react-redux';
+import { useState,useEffect,useRef} from 'react';
+import { useDispatch,useSelector } from 'react-redux';
+import {quesActions} from '../../../redux/slice/slice';
+
 import './QuizQuesCard_Topic.styles.scss';
 
-const QuizQuesCard_Topic = ({topic}) =>{    
+const QuizQuesCard_Topic = ({topic}) =>{   
+    const dispatch = useDispatch(); 
     const state = useSelector(state => state.ques);
     const currentSlide = state.currentQues;
     const initState = { min: 0, sec: 59, timeInstance:null };
     const [time, setTime] = useState(initState);
+    const currentTime = useRef();
     const [domUnloading, setDomUnloading] = useState(false);
     let [instanceTime, setInstanceTime] = useState(null);
     let timer;
@@ -22,14 +26,19 @@ const QuizQuesCard_Topic = ({topic}) =>{
       if(typeof instanceTime==='object')
       setInstanceTime(timer);
     };
+    
+    currentTime.current = time;
+    
     useEffect(() => {
-        console.log(time);
         return () => {
                 setDomUnloading(true);
+                dispatch(quesActions.addTimeSpan(currentTime.current))
                 clearInterval(instanceTime);
         }
-    }, [clearInterval,domUnloading,instanceTime])
+    }, [dispatch, domUnloading, instanceTime])
     
+    
+
     if(currentSlide===0 && typeof instanceTime==='object')
       timerFunc();
 

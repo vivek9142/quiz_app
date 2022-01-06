@@ -5,6 +5,7 @@ const initialState = {
     loading:false,
     error:'',
     ques:[],
+    time:0,
     currentQues:-1
 };
 
@@ -17,6 +18,10 @@ const quesReducer = createSlice({
         },
         restartQuiz:(state)=>{
             state.currentQues=initialState.currentQues;
+        },
+        addTimeSpan:(state,action)=>{
+            const fulltime = action.payload.min*60 + action.payload.sec;
+            state.time = fulltime;
         }
     },
     extraReducers:(builder) => {
