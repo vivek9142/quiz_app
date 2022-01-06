@@ -8,11 +8,15 @@ const Timer = props => {
     const dispatch = useDispatch(); 
     const state = useSelector(state => state.ques);
     const currentSlide = state.currentQues;
-    const initState = { min: 0, sec: 59, timeInstance:null };
+
+    const initState = { min: 0, sec: 0, timeInstance:null };
+
     const [time, setTime] = useState(initState);
     const currentTime = useRef();
+
     const [domUnloading, setDomUnloading] = useState(false);
     let [instanceTime, setInstanceTime] = useState(null);
+
     let timer;
     let timerFunc = () => {
       timer = setInterval(() => {
