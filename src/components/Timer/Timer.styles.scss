@@ -1,0 +1,25 @@
+.quizQuesCard__timeCounter{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    background: rgba(47, 47, 47, 0.36);
+    border-radius: 5px;
+    color: #FFFFFF;
+    padding: 0.2rem 1rem;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+
+    &::after {
+        content: ':';
+        position: absolute;
+        left: 3.2rem;
+    }
+
+    &--min,&--sec {
+        display: flex;
+        flex-direction: column;
+    }
+}
