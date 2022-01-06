@@ -12,7 +12,7 @@ const QuizQuesCard = ({data,...props}) => {
               <Card.Body className='quizQuesCard__body'>
                     <QuizQuesCard_Topic topic={data.category}/>
                     <QuizQuesCard_Ques id={data._id} question={data.question}/>
-                    <QuizQuesCard_Ans/>
+                    <QuizQuesCard_Ans ans={data.answer}/>
               </Card.Body>
           </Card>
         </>

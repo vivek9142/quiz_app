@@ -1,14 +1,24 @@
-import ButtonComp from '../../ButtonComp/ButtonComp.component';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import ButtonComp from '../../ButtonComp/ButtonComp.component';
 import { quesActions } from '../../../redux/slice/slice';
 
 import './QuizQuesCard_Ans.styles.scss';
 
-const QuizQuesCard_Ans = props => {
+const QuizQuesCard_Ans = ({ans}) => {
     const dispatch = useDispatch();
+    const [clicked,setClicked] = useState(false);
+
+    const clickHandler = () =>{
+        setClicked(true);
+    }
 
     const submitHandler = event => {
         event.preventDefault();
+        if(!clicked){
+            if(ans === event.target[0].value)
+            dispatch(quesActions.addCorrectAnswers());
+        }
         dispatch(quesActions.changeQues())
     }
     return(
@@ -22,8 +32,8 @@ const QuizQuesCard_Ans = props => {
                 </div>
 
                 <div className="QuizQuesCard_Ans--soln-container">
-                    <span>Stuck ?</span>
-                    <ButtonComp>See Solution</ButtonComp>
+                    <span>{clicked ? ans :`Stuck ?`}</span>
+                    <ButtonComp onClick={clickHandler}>See Solution</ButtonComp>
                 </div>
             </div>
         </div>

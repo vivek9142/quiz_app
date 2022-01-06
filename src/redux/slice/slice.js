@@ -6,7 +6,8 @@ const initialState = {
     error:'',
     ques:[],
     time:0,
-    currentQues:-1
+    currentQues:-1,
+    correctAns:0
 };
 
 const quesReducer = createSlice({
@@ -22,6 +23,9 @@ const quesReducer = createSlice({
         addTimeSpan:(state,action)=>{
             const fulltime = action.payload.min*60 + action.payload.sec;
             state.time = fulltime;
+        },
+        addCorrectAnswers:(state,action)=>{
+            state.correctAns++;
         }
     },
     extraReducers:(builder) => {
