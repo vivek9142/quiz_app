@@ -5,7 +5,7 @@ import { quesActions } from '../../../redux/slice/slice';
 
 import './QuizQuesCard_Ans.styles.scss';
 
-const QuizQuesCard_Ans = ({ans}) => {
+const QuizQuesCard_Ans = ({ans,...props}) => {
     const dispatch = useDispatch();
     const [clicked,setClicked] = useState(false);
 
@@ -17,9 +17,15 @@ const QuizQuesCard_Ans = ({ans}) => {
         event.preventDefault();
         if(!clicked){
             if(ans === event.target[0].value)
-            dispatch(quesActions.addCorrectAnswers());
+            {
+                props.ansCheck(true);
+                dispatch(quesActions.addCorrectAnswers());
+            } else props.ansCheck(false);
         }
-        dispatch(quesActions.changeQues())
+        setTimeout(()=>{
+            dispatch(quesActions.changeQues())
+        },2000);
+        
     }
     return(
         <div className="QuizQuesCard_Ans--container">

@@ -1,0 +1,15 @@
+.QuizQuesCard_AnsStatus{
+    height: 7.3125rem;
+    border-radius: 0px 0px 5px 5px;
+
+    &_container{
+        height: 7.3125rem;
+        &--right-ans{
+            background: linear-gradient(91.23deg, #20622A 0%, #48B566 131.71%);
+        }
+
+        &--wrong-ans{
+            background: linear-gradient(91.23deg, #F35325 0%, #F3AD25 131.71%);
+        }
+    }    
+}
