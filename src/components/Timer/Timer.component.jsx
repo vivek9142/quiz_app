@@ -5,6 +5,7 @@ import { quesActions } from '../../redux/slice/slice';
 import './Timer.styles.scss';
 
 const Timer = props => {
+    
     const dispatch = useDispatch(); 
     const state = useSelector(state => state.ques);
     const currentSlide = state.currentQues;

@@ -7,7 +7,8 @@ const initialState = {
     ques:[],
     time:0,
     currentQues:-1,
-    correctAns:0
+    correctAns:0,
+    timePause:false
 };
 
 const quesReducer = createSlice({

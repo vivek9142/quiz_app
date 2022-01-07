@@ -1,18 +1,17 @@
 /* eslint-disable react/jsx-pascal-case */
 import { useState } from 'react';
 import {Card} from 'react-bootstrap';
-// import { useSelector } from 'react-redux';
 import QuizQuesCard_Topic from '../QuizQuesCard_Topic/QuizQuesCard_Topic.component';
 import QuizQuesCard_Ques from '../QuizQuesCard_Ques/QuizQuesCard_Ques.component';
 import QuizQuesCard_Ans from '../QuizQuesCard_Ans/QuizQuesCard_Ans.component';
 import QuizQuesCard_AnsStatus from '../QuizQuesCard_AnsStatus/QuizQuesCard_AnsStatus.component';
 import './QuizQuesCard.styles.scss';
 
-const QuizQuesCard = ({data,...props}) => {
+const QuizQuesCard = ({data}) => {
     const [ansAnimate,setAnsAnimate] = useState(null);
 
     const answerStatusCheck = (status) => {
-        console.log(status);
+        
         setAnsAnimate(status===true ? 'right' : 'wrong');
         setTimeout(()=>{
             setAnsAnimate(null);

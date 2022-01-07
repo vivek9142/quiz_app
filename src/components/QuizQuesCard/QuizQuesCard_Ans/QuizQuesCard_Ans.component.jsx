@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useRef,useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import ButtonComp from '../../ButtonComp/ButtonComp.component';
 import { quesActions } from '../../../redux/slice/slice';
@@ -6,8 +6,13 @@ import { quesActions } from '../../../redux/slice/slice';
 import './QuizQuesCard_Ans.styles.scss';
 
 const QuizQuesCard_Ans = ({ans,...props}) => {
+    const inputFocus = useRef(null);
     const dispatch = useDispatch();
     const [clicked,setClicked] = useState(false);
+
+    useEffect(() => {
+        inputFocus.current.focus();
+    }, [inputFocus]);
 
     const clickHandler = () =>{
         setClicked(true);
@@ -33,7 +38,7 @@ const QuizQuesCard_Ans = ({ans,...props}) => {
                 <div className="QuizQuesCard_Ans--main--container">
                     <h3 className="QuizQuesCard_Ans--heading">Answer</h3>
                     <form onSubmit={submitHandler} className="QuizQuesCard_Ans--form">
-                        <input type="text" placeholder='Type Answer...' className="QuizQuesCard_Ans--form-input" />
+                        <input type="text" ref={inputFocus} placeholder='Type Answer...' className="QuizQuesCard_Ans--form-input" />
                     </form>
                 </div>
 
