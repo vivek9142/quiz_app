@@ -1,4 +1,4 @@
-import { useState,useRef,useEffect } from 'react';
+import { useState,useRef,useEffect,useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import ButtonComp from '../../ButtonComp/ButtonComp.component';
 import { quesActions } from '../../../redux/slice/slice';
@@ -9,14 +9,20 @@ const QuizQuesCard_Ans = ({ans,...props}) => {
     const inputFocus = useRef(null);
     const dispatch = useDispatch();
     const [clicked,setClicked] = useState(false);
-    
     const [initialDisabled,setInitialDisabled] = useState(true);
 
-    setTimeout(()=>setInitialDisabled(false),2000);
+    const instance = setTimeout(()=>
+    setInitialDisabled(false) 
+    ,1000);
 
     useEffect(() => {
         inputFocus.current.focus();
-    }, [inputFocus,initialDisabled]);
+        return(()=>{
+            clearTimeout(instance);
+        });
+    }, 
+    [inputFocus,initialDisabled,instance]
+    );
 
     const clickHandler = () =>{
         setClicked(true);
