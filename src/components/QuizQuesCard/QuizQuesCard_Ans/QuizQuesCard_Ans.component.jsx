@@ -9,10 +9,14 @@ const QuizQuesCard_Ans = ({ans,...props}) => {
     const inputFocus = useRef(null);
     const dispatch = useDispatch();
     const [clicked,setClicked] = useState(false);
+    
+    const [initialDisabled,setInitialDisabled] = useState(true);
+
+    setTimeout(()=>setInitialDisabled(false),2000);
 
     useEffect(() => {
         inputFocus.current.focus();
-    }, [inputFocus]);
+    }, [inputFocus,initialDisabled]);
 
     const clickHandler = () =>{
         setClicked(true);
@@ -29,7 +33,6 @@ const QuizQuesCard_Ans = ({ans,...props}) => {
         setTimeout(()=>{
             dispatch(quesActions.changeQues())
         },2000);
-        
     }
     return(
         <div className="QuizQuesCard_Ans--container">
@@ -37,7 +40,7 @@ const QuizQuesCard_Ans = ({ans,...props}) => {
                 <div className="QuizQuesCard_Ans--main--container">
                     <h3 className="QuizQuesCard_Ans--heading">Answer</h3>
                     <form onSubmit={submitHandler} className="QuizQuesCard_Ans--form">
-                        <input type="text" ref={inputFocus} placeholder='Type Answer...' className="QuizQuesCard_Ans--form-input" />
+                        <input type="text" ref={inputFocus} placeholder='Type Answer...' disabled={initialDisabled} className="QuizQuesCard_Ans--form-input" />
                     </form>
                 </div>
 
