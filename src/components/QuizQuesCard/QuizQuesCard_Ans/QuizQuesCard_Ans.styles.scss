@@ -28,9 +28,28 @@
         padding: 0.5rem;
     }
 
-    &--soln-container {
+    &--soln{
+        display: block;
+        position:relative;
+        
+        &-container {
         display: flex;
         align-items: center;
         gap: 1rem;
+        position:relative;
+    }}
+}
+
+.animation{
+    animation: solutionShow .5s;
+}
+@keyframes solutionShow{
+    0% {
+        top:5rem;
+        opacity: 0;
+    }
+    100% {
+        top:0rem;
+        opacity: 1;
     }
 }

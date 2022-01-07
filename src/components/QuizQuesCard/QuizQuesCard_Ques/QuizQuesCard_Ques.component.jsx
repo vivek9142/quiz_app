@@ -8,7 +8,7 @@ const QuizQuesCard_Ques = ({id,question}) => {
                 <div className="QuizQuesCard_Ques--ques-num">
                 QUESTION {id} of 6
                 </div>
-                <div className="QuizQuesCard_Ques--ques-text">
+                <div className="QuizQuesCard_Ques--ques-text" style={{animation: `quesAnimation${id} 1s`}}>
                 {question}
                 </div>
             </div>

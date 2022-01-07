@@ -20,13 +20,12 @@ const QuizQuesCard_Ans = ({ans,...props}) => {
 
     const submitHandler = event => {
         event.preventDefault();
-        if(!clicked){
             if(ans === event.target[0].value)
             {
                 props.ansCheck(true);
-                dispatch(quesActions.addCorrectAnswers());
+                if(!clicked) dispatch(quesActions.addCorrectAnswers());
             } else props.ansCheck(false);
-        }
+
         setTimeout(()=>{
             dispatch(quesActions.changeQues())
         },2000);
@@ -43,8 +42,13 @@ const QuizQuesCard_Ans = ({ans,...props}) => {
                 </div>
 
                 <div className="QuizQuesCard_Ans--soln-container">
-                    <span>{clicked ? ans :`Stuck ?`}</span>
-                    <ButtonComp onClick={clickHandler}>See Solution</ButtonComp>
+                    {clicked ? 
+                    (<span className={clicked ? 'QuizQuesCard_Ans--soln animation' : 'QuizQuesCard_Ans--soln'}>{ans}</span>)
+                    : (<>
+                        <span>'Stuck ?'</span>
+                        <ButtonComp type='button' onClick={clickHandler}>See Solution</ButtonComp>
+                        </>)
+                    }
                 </div>
             </div>
         </div>
