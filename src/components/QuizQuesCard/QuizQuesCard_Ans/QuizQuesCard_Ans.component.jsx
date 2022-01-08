@@ -1,4 +1,4 @@
-import { useState,useRef,useEffect,useMemo } from 'react';
+import { useState,useRef,useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import ButtonComp from '../../ButtonComp/ButtonComp.component';
 import { quesActions } from '../../../redux/slice/slice';
