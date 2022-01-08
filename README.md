@@ -6,6 +6,7 @@ Quiz_App is an Quiz game app responsible for accesssing the Player's Accuracy an
 ## Features
 Quiz app has following features - 
 * Redux-Toolkit is used for State Management.
+* Full Responsive App. Supported with Desktop,Tablet and Phone.
 * Time Bounded App. It is used to calculate Avg Speed of the Player.
 * Question are imported from Async Request using Redux thunk.
 * Lottie animation is played on Every Question being answered by Player.
