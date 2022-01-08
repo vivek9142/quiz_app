@@ -38,37 +38,3 @@
   }
 }
 
-.dots__vertical-image_container{
-  width: 12rem;
-  right: 5rem;
-  z-index: -2;
-  position: relative;
-
-  & img {
-    width: 100%;
-  } 
-}
-
-
-.dots__horizontal-image_container{
-  width: 24rem;
-  z-index: -1;
-  position: relative;
-  left: 13rem;
-
-    & img {
-      width: 100%;
-    } 
-}
-.homepage__center-container{
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 7rem;
-}
-
-.homepage__top--container{
-  height: 50vh;
-  background: rgba(128, 255, 219, 0.2);
-  clip-path: polygon(0 0, 100% 0%, 100% 93%, 0% 100%);
-}

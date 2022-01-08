@@ -5,6 +5,12 @@
     align-items: center;
     color: #fff;
 
+    @media (max-width: 970px) {
+       flex-direction: column;
+       align-items: stretch;
+       gap: 2.12rem;
+    }
+
     &--container {
         background: linear-gradient(91.23deg, #6776FF 0%, #80FFDB 131.71%);
         border-radius: 0px 0px 5px 5px;
@@ -26,6 +32,14 @@
         outline: none;
         border: none;
         padding: 0.5rem;
+
+        @media (max-width: 992px) {
+            width: 17rem;
+        }
+
+        @media (max-width: 970px) {
+            width: 100%;
+         }
     }
 
     &--soln{

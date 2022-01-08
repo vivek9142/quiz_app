@@ -1,16 +1,21 @@
 import QuizCard from '../../components/QuizCard/QuizCard.component';
 import DotsVertical from '../../assets/img/dots_verticle.png';
 import DotsHorizontal from '../../assets/img/dots_horizontal.png';
-import Header from '../../components/Header/Header.component';
+import HeaderDesktop from '../../components/Header/HeaderDesktop/HeaderDesktop.component';
+import HeaderSidebar from '../../components/Header/HeaderSidebar/HeaderSidebar.component';
+
+import './Homepage.styles.scss';
 
 const Homepage = props => {
     return (
+      <>
+      
         <div className="homepage__container">
 
             <div className="homepage">
               <div className="homepage__top--container">
-                <Header/>
-                
+                <HeaderDesktop/>
+                <HeaderSidebar/>
               </div>
               <div className="homepage__center-container">
                 <div className="dots__horizontal-image_container">
@@ -25,6 +30,7 @@ const Homepage = props => {
             </div>
           
           </div>
+          </>
     )
 }
 

@@ -1,0 +1,25 @@
+
+div#offcanvasNavbar {
+    width: 100%;
+}
+
+.offcanvas__logo {
+    width: 100%;
+
+    &--container {
+        width: 7.5rem;
+    }
+}
+
+.offcanvas-body {
+    margin: 1rem 4.5rem;
+}
+
+.justify-content-end.flex-grow-1.pe-3.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    font-family: 'Poppins';
+    font-weight: 400;
+}

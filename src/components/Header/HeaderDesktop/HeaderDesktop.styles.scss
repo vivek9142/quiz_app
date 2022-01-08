@@ -1,0 +1,48 @@
+.header{
+    background: transparent;   
+    padding-top: 1.5rem;
+    font-family: inherit;
+    &__logo{
+        width: 7.5rem;
+
+        &--img{
+            width:100%;
+        }
+    }
+
+    &__navbar--toggler{
+        filter: invert(19%) sepia(100%) saturate(6481%) hue-rotate(246deg) brightness(102%) contrast(143%) !important;
+        border: none !important;
+        @media (max-width: 768px) {
+            display: block !important; 
+        }
+        
+    }
+
+    &__nav--container{
+        gap: 3rem;
+        @media (max-width: 1200px) {
+            gap: 2rem;
+        }
+
+        @media (max-width: 992px) {
+            gap: 1rem;
+        }
+    }
+
+    & #basic-navbar-nav{
+        display: none;
+        @media (max-width: 768px) {
+            display: none !important;
+        }
+    }
+
+    & .navbar__sidebar--icon{
+        &-container{
+            display: none;
+            @media (max-width: 768px) {
+                display:block;
+            }
+        }
+    }
+}
