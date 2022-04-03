@@ -1,3 +1,4 @@
+import {useState,useEffect} from 'react';
 import QuizCard from '../../components/QuizCard/QuizCard.component';
 import DotsVertical from '../../assets/img/dots_verticle.png';
 import DotsHorizontal from '../../assets/img/dots_horizontal.png';
@@ -5,13 +6,17 @@ import HeaderDesktop from '../../components/Header/HeaderDesktop/HeaderDesktop.c
 import HeaderSidebar from '../../components/Header/HeaderSidebar/HeaderSidebar.component';
 
 import './Homepage.styles.scss';
+import useDimensions from '../../utils/screenDimension';
+
+
 
 const Homepage = props => {
+    const dimension = useDimensions();
     return (
       <>
       
         <div className="homepage__container">
-
+            {dimension.width}
             <div className="homepage">
               <div className="homepage__top--container">
                 <HeaderDesktop/>
