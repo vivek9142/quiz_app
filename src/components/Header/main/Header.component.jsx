@@ -2,7 +2,7 @@ import React from 'react';
 import useNameDimension from '../../../utils/useNameDimension';
 import Logo from '../../../assets/img/logo.png';
 import { Navbar,Container } from 'react-bootstrap';
-import './HeaderDesktop.styles.scss';
+import './Header.styles.scss';
 
 const HeaderSidebar = React.lazy(()=> import('../HeaderSidebar/HeaderSidebar.component'));
 const NavBarCollapse = React.lazy(()=> import('../NavBarCollapse/NavBarCollapse.component'));

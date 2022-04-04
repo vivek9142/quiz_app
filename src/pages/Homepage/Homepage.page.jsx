@@ -6,7 +6,7 @@ import DotsHorizontal from '../../assets/img/dots_horizontal.png';
 import './Homepage.styles.scss';
 import useNameDimension from '../../utils/useNameDimension';
 
-import Header from '../../components/Header/HeaderDesktop/HeaderDesktop.component'
+import Header from '../../components/Header/main/Header.component'
 
 
 const Homepage = props => {
