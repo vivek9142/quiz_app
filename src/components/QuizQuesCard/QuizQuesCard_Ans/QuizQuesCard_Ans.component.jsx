@@ -30,7 +30,7 @@ const QuizQuesCard_Ans = ({ans,...props}) => {
 
     const submitHandler = event => {
         event.preventDefault();
-            if(ans === event.target[0].value)
+            if(ans.toLowerCase() === event.target[0].value.toLowerCase())
             {
                 props.ansCheck(true);
                 if(!clicked) dispatch(quesActions.addCorrectAnswers());

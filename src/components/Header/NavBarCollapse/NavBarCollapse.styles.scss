@@ -1,0 +1,12 @@
+.header {
+    &__nav--container{
+        gap: 3rem;
+        @media (max-width: 1200px) {
+            gap: 2rem;
+        }
+
+        @media (max-width: 992px) {
+            gap: 1rem;
+        }
+    }
+}

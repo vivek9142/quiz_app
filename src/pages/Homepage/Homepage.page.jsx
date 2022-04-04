@@ -1,26 +1,25 @@
-import {useState,useEffect} from 'react';
+import React from 'react';
 import QuizCard from '../../components/QuizCard/QuizCard.component';
 import DotsVertical from '../../assets/img/dots_verticle.png';
 import DotsHorizontal from '../../assets/img/dots_horizontal.png';
-import HeaderDesktop from '../../components/Header/HeaderDesktop/HeaderDesktop.component';
-import HeaderSidebar from '../../components/Header/HeaderSidebar/HeaderSidebar.component';
 
 import './Homepage.styles.scss';
-import useDimensions from '../../utils/screenDimension';
+import useNameDimension from '../../utils/useNameDimension';
 
+import Header from '../../components/Header/HeaderDesktop/HeaderDesktop.component'
 
 
 const Homepage = props => {
-    const dimension = useDimensions();
+    const dimension = useNameDimension();
     return (
       <>
       
         <div className="homepage__container">
-            {dimension.width}
+            {dimension}
             <div className="homepage">
               <div className="homepage__top--container">
-                <HeaderDesktop/>
-                <HeaderSidebar/>
+                <Header/>
+                
               </div>
               <div className="homepage__center-container">
                 <div className="dots__horizontal-image_container">

@@ -5,6 +5,8 @@ import './HeaderSidebar.styles.scss';
 
 const HeaderSidebar = props => {
     return(
+        <>
+        <Navbar.Toggle aria-controls="offcanvasNavbarLabel" className='header__navbar--toggler' />
         <Navbar.Offcanvas
         id="offcanvasNavbar"
         aria-labelledby="offcanvasNavbarLabel"
@@ -32,6 +34,7 @@ const HeaderSidebar = props => {
                         </Nav>
                     </Offcanvas.Body>
         </Navbar.Offcanvas>
+        </>
     )
 }
 
