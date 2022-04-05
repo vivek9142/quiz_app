@@ -1,45 +1,9 @@
-import { useState,useRef,useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import ButtonComp from '../../ButtonComp/ButtonComp.component';
-import { quesActions } from '../../../redux/slice/slice';
 
 import './QuizQuesCard_Ans.styles.scss';
 
-const QuizQuesCard_Ans = ({ans,...props}) => {
-    const inputFocus = useRef(null);
-    const dispatch = useDispatch();
-    const [clicked,setClicked] = useState(false);
-    const [initialDisabled,setInitialDisabled] = useState(true);
-
-    const instance = setTimeout(()=>
-    setInitialDisabled(false) 
-    ,1000);
-
-    useEffect(() => {
-        inputFocus.current.focus();
-        return(()=>{
-            clearTimeout(instance);
-        });
-    }, 
-    [inputFocus,initialDisabled,instance]
-    );
-
-    const clickHandler = () =>{
-        setClicked(true);
-    }
-
-    const submitHandler = event => {
-        event.preventDefault();
-            if(ans.toLowerCase() === event.target[0].value.toLowerCase())
-            {
-                props.ansCheck(true);
-                if(!clicked) dispatch(quesActions.addCorrectAnswers());
-            } else props.ansCheck(false);
-
-        setTimeout(()=>{
-            dispatch(quesActions.changeQues())
-        },2000);
-    }
+const QuizQuesCard_Ans = ({submitHandler,clickHandler,initialDisabled,inputFocus,ans,clicked}) => {
+    
     return(
         <div className="QuizQuesCard_Ans--container">
             <div className="QuizQuesCard_Ans">
