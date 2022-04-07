@@ -13,7 +13,8 @@ const QuizCard = (props) => {
             {state.currentQues === -1 && (<QuizStart/>)}
             
             {((state.currentQues === 0 || state.currentQues !== -1) && (state.currentQues < state.ques.length)) && 
-            (<QuizQuesCard data={state.ques[state.currentQues]}/>)}
+            (<QuizQuesCard/>
+            )}
 
             {state.currentQues === state.ques.length && 
             (<QuizEndCard/>)}

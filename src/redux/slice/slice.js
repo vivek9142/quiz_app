@@ -25,7 +25,7 @@ const quesReducer = createSlice({
             const fulltime = action.payload.min*60 + action.payload.sec;
             state.time = fulltime;
         },
-        addCorrectAnswers:(state,action)=>{
+        addCorrectAnswers:(state)=>{
             state.correctAns++;
         }
     },
@@ -41,7 +41,6 @@ const quesReducer = createSlice({
     .addCase(getQues.fulfilled,(state,action)=>{
         state.error='';
         state.loading = false;
-        console.log(state,action)
         state.ques.push(...action.payload);
     })
     }

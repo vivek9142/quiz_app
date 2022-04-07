@@ -1,9 +1,11 @@
 import { useState,useRef,useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector , useDispatch } from 'react-redux';
 import { quesActions } from '../../../redux/slice/slice';
 import QuizQuesCard_Ans from './QuizQuesCard_Ans.component';
 
-const QuizQuesCardAnsContainer = ({ans,...props}) => {
+const QuizQuesCardAnsContainer = ({ansCheck}) => {
+    const state = useSelector(state => state.ques);
+    
     const inputFocus = useRef(null);
     const dispatch = useDispatch();
     const [clicked,setClicked] = useState(false);
@@ -22,15 +24,17 @@ const QuizQuesCardAnsContainer = ({ans,...props}) => {
     [inputFocus,initialDisabled,instance]
     );
 
+    const {answer} = state.ques[state.currentQues];
+
     const clickHandler = () => setClicked(true);
 
     const submitHandler = event => {
         event.preventDefault();
-            if(ans.toLowerCase() === event.target[0].value.toLowerCase())
+            if(answer.toLowerCase() === event.target[0].value.toLowerCase())
             {
-                props.ansCheck(true);
+                ansCheck(true);
                 if(!clicked) dispatch(quesActions.addCorrectAnswers());
-            } else props.ansCheck(false);
+            } else ansCheck(false);
 
         setTimeout(()=>{
             dispatch(quesActions.changeQues())
@@ -44,7 +48,6 @@ const QuizQuesCardAnsContainer = ({ans,...props}) => {
         clickHandler = {clickHandler}
         initialDisabled = {initialDisabled}
         inputFocus = {inputFocus}
-        ans = {ans}
         clicked = {clicked}
         />
     )

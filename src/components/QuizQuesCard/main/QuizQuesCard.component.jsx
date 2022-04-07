@@ -7,11 +7,10 @@ import QuizQuesCardAnsContainer from '../QuizQuesCard_Ans/QuizQuesCard_Ans.conta
 import QuizQuesCard_AnsStatus from '../QuizQuesCard_AnsStatus/QuizQuesCard_AnsStatus.component';
 import './QuizQuesCard.styles.scss';
 
-const QuizQuesCard = ({data}) => {
+const QuizQuesCard = (props) => {
     const [ansAnimate,setAnsAnimate] = useState(null);
 
     const answerStatusCheck = (status) => {
-        
         setAnsAnimate(status===true ? 'right' : 'wrong');
         setTimeout(()=>{
             setAnsAnimate(null);
@@ -22,11 +21,11 @@ const QuizQuesCard = ({data}) => {
         <>
         <Card className="quizQuesCard__container">
               <Card.Body className='quizQuesCard__body'>
-                    <QuizQuesCard_Topic topic={data.category}/>
-                    <QuizQuesCard_Ques id={data._id} question={data.question}/>
+                    <QuizQuesCard_Topic/>
+                    <QuizQuesCard_Ques/>
                     {typeof ansAnimate === 'string'? 
                     (<QuizQuesCard_AnsStatus status={ansAnimate}/>):
-                    (<QuizQuesCardAnsContainer ans={data.answer} ansCheck={answerStatusCheck}/>)}
+                    (<QuizQuesCardAnsContainer ansCheck={answerStatusCheck}/>)}
               </Card.Body>
           </Card>
         </>
