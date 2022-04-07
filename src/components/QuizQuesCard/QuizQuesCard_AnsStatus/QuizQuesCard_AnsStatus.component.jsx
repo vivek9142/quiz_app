@@ -1,9 +1,11 @@
+import React from 'react';
 import {useEffect,useRef} from 'react';
 import lottie from 'lottie-web';
 
 import './QuizQuesCard_AnsStatus.styles.scss';
 
 const QuizQuesCard_AnsStatus = ({status}) =>{
+
     const container = useRef(null);
     
     useEffect(() => {
