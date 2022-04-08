@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import { useState } from 'react';
+import { useCallback,useState } from 'react';
 import {Card} from 'react-bootstrap';
 import QuizQuesCard_Topic from '../QuizQuesCard_Topic/QuizQuesCard_Topic.component';
 import QuizQuesCard_Ques from '../QuizQuesCard_Ques/QuizQuesCard_Ques.component';
@@ -10,12 +10,17 @@ import './QuizQuesCard.styles.scss';
 const QuizQuesCard = (props) => {
     const [ansAnimate,setAnsAnimate] = useState(null);
 
-    const answerStatusCheck = (status) => {
+    const answerStatusCheck = useCallback((status) => {
         setAnsAnimate(status===true ? 'right' : 'wrong');
-        setTimeout(()=>{
+        const instance = setTimeout(()=>{
             setAnsAnimate(null);
         },2000);
-    }
+
+        return () =>{
+            console.log(instance);
+            clearInterval(instance);
+        }
+    },[]);
      
     return (
         <>

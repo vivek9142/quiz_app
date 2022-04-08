@@ -1,4 +1,4 @@
-import { useState,useEffect,useRef} from 'react';
+import { useState,useEffect,useRef, useCallback} from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { quesActions } from '../../redux/slice/slice';
 
@@ -18,9 +18,10 @@ const Timer = props => {
     const [domUnloading, setDomUnloading] = useState(false);
     let [instanceTime, setInstanceTime] = useState(null);
 
-    let timer;
-    let timerFunc = () => {
-      timer = setInterval(() => {
+    let timer = useRef(null);
+    
+    let timerFunc = useCallback(() => {
+      timer.current = setInterval(() => {
         setTime((prevState) => {
           if (prevState.sec < 59) return { ...prevState, sec: prevState.sec + 1 };
           else if (prevState.sec === 59 && prevState.min < 59)
@@ -28,9 +29,9 @@ const Timer = props => {
         })
       }, 1000);
       
-      if(typeof instanceTime==='object')
-      setInstanceTime(timer);
-    };
+      if(typeof instanceTime ==='object')
+      setInstanceTime(timer.current);
+    },[instanceTime]);
     
     currentTime.current = time;
     
