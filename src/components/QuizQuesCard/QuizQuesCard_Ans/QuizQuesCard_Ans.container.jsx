@@ -1,4 +1,4 @@
-import { useCallback,useState,useRef,useEffect, useMemo } from 'react';
+import { useCallback,useState,useRef,useEffect } from 'react';
 import { useSelector , useDispatch } from 'react-redux';
 import { quesActions } from '../../../redux/slice/slice';
 import QuizQuesCard_Ans from './QuizQuesCard_Ans.component';
@@ -10,25 +10,18 @@ const QuizQuesCardAnsContainer = ({ansCheck}) => {
     const dispatch = useDispatch();
     const [clicked,setClicked] = useState(false);
     const [initialDisabled,setInitialDisabled] = useState(true);
-
-    const instance = setTimeout(()=>
-    {
-        if(state.currentQues !== state.ques.length)
-        setInitialDisabled(false) 
-    },1000);
-
+    
     useEffect(() => {
+        let instance = setTimeout(()=>{
+            setInitialDisabled(false) 
+        },1000);
         inputFocus.current.focus();
+
         return(()=>{
-            if(state.currentQues === state.ques.length) {
-                inputFocus.current = null;
-                // setInitialDisabled(false);
-            }
             clearTimeout(instance);
         });
     }, 
-    [inputFocus, initialDisabled, instance, state.currentQues]
-    );
+    [inputFocus, initialDisabled]);
 
     const {answer} = state.ques[state.currentQues];
 
