@@ -17,7 +17,6 @@ const QuizQuesCard = (props) => {
         },2000);
 
         return () =>{
-            console.log(instance);
             clearInterval(instance);
         }
     },[]);

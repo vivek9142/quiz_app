@@ -1,7 +1,11 @@
-import { useCallback,useState,useRef,useEffect } from 'react';
+/* eslint-disable react/jsx-pascal-case */
+import { createContext , useCallback,useState,useRef,useEffect } from 'react';
 import { useSelector , useDispatch } from 'react-redux';
 import { quesActions } from '../../../redux/slice/slice';
 import QuizQuesCard_Ans from './QuizQuesCard_Ans.component';
+
+const QuizCardContext =  createContext(null);
+QuizCardContext.displayName = 'QuizCardContext';
 
 const QuizQuesCardAnsContainer = ({ansCheck}) => {
     const state = useSelector(state => state.ques);
@@ -41,18 +45,26 @@ const QuizQuesCardAnsContainer = ({ansCheck}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[clicked,answer])
 
+
+    
+
+    const value = {
+        submitHandler:submitHandler,
+        clickHandler:clickHandler,
+        initialDisabled:initialDisabled,
+        inputFocus:inputFocus,
+        clicked:clicked,
+    }
+
     if(state.currentQues === state.ques.length) return <></>
 
     return(
-        // eslint-disable-next-line react/jsx-pascal-case
-        <QuizQuesCard_Ans 
-        submitHandler = {submitHandler}
-        clickHandler = {clickHandler}
-        initialDisabled = {initialDisabled}
-        inputFocus = {inputFocus}
-        clicked = {clicked}
-        />
+        <QuizCardContext.Provider value={value}>
+            <QuizQuesCard_Ans/>
+        </QuizCardContext.Provider>
     )
 }
 
 export default QuizQuesCardAnsContainer;
+
+export {QuizCardContext};

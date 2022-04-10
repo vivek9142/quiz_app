@@ -1,10 +1,12 @@
+import React,{ useContext } from 'react';
 import { useSelector } from 'react-redux';
 import ButtonComp from '../../ButtonComp/ButtonComp.component';
+import { QuizCardContext } from './QuizQuesCard_Ans.container';
 
 import './QuizQuesCard_Ans.styles.scss';
 
-const QuizQuesCard_Ans = ({submitHandler,clickHandler,initialDisabled,inputFocus,clicked}) => {
-
+const QuizQuesCard_Ans = () => {
+    const {submitHandler,initialDisabled,inputFocus} = useContext(QuizCardContext);
     return(
         <div className="QuizQuesCard_Ans--container">
             <div className="QuizQuesCard_Ans">
@@ -16,7 +18,7 @@ const QuizQuesCard_Ans = ({submitHandler,clickHandler,initialDisabled,inputFocus
                 </div>
 
                 <div className="QuizQuesCard_Ans--soln-container">
-                    <QuizQuesCardAnsStuck clickHandler={clickHandler} clicked={clicked}/>
+                    <QuizQuesCardAnsStuck/>
                 </div>
             </div>
         </div>
@@ -24,7 +26,8 @@ const QuizQuesCard_Ans = ({submitHandler,clickHandler,initialDisabled,inputFocus
 };
 
 
-function QuizQuesCardAnsStuck({clicked,clickHandler}){
+function QuizQuesCardAnsStuck(){
+    const {clicked,clickHandler} = useContext(QuizCardContext);
     const state = useSelector(state => state.ques);
     const {answer} = state.ques[state.currentQues];
     
@@ -41,4 +44,6 @@ function QuizQuesCardAnsStuck({clicked,clickHandler}){
     )
 }
 
-export default QuizQuesCard_Ans;
+QuizQuesCardAnsStuck = React.memo(QuizQuesCardAnsStuck);
+
+export default React.memo(QuizQuesCard_Ans);
