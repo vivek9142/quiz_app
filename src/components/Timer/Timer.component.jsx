@@ -43,24 +43,29 @@ const Timer = props => {
         }
     }, [dispatch, domUnloading, instanceTime])
     
-    
+    const displayTime = useCallback((type)=>{
+      if(type === 'min')
+      return `${Math.floor(time.min / 10) === 0 ? "0" + time.min : time.min}`
+      else if(type === 'sec')
+      return `${Math.floor(time.sec / 10) === 0 ? "0" + time.sec : time.sec}`
+    },[time])
 
     if(currentSlide===0 && typeof instanceTime==='object')
       timerFunc();
 
-    if(domUnloading) return <></>;
+    if(domUnloading) return;
     return (
         <div className="quizQuesCard__timeCounter">
             <div className="quizQuesCard__timeCounter--min">
             <span>
-                {`${Math.floor(time.min / 10) === 0 ? "0" + time.min : time.min}`}
+                {displayTime('min')}
             </span>
             <span>min</span>
         </div>
 
         <div className="quizQuesCard__timeCounter--sec">
             <span>
-                {`${Math.floor(time.sec / 10) === 0 ? "0" + time.sec : time.sec}`}
+                {displayTime('sec')}
             </span>
             <span>sec</span>
         </div>

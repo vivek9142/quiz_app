@@ -1,32 +1,18 @@
 /* eslint-disable react/jsx-pascal-case */
-import { createContext , useCallback,useState,useRef,useEffect } from 'react';
+import { createContext , useCallback,useState } from 'react';
 import { useSelector , useDispatch } from 'react-redux';
 import { quesActions } from '../../../redux/slice/slice';
 import QuizQuesCard_Ans from './QuizQuesCard_Ans.component';
 
 const QuizCardContext =  createContext(null);
-QuizCardContext.displayName = 'QuizCardContext';
+QuizCardContext.displayName = 'QuizCardStateContext';
 
 const QuizQuesCardAnsContainer = ({ansCheck}) => {
     const state = useSelector(state => state.ques);
-    
-    const inputFocus = useRef(null);
+   
     const dispatch = useDispatch();
     const [clicked,setClicked] = useState(false);
-    const [initialDisabled,setInitialDisabled] = useState(true);
     
-    useEffect(() => {
-        let instance = setTimeout(()=>{
-            setInitialDisabled(false) 
-        },1000);
-        inputFocus.current.focus();
-
-        return(()=>{
-            clearTimeout(instance);
-        });
-    }, 
-    [inputFocus, initialDisabled]);
-
     const {answer} = state.ques[state.currentQues];
 
     const clickHandler = useCallback(() => setClicked(true),[]);
@@ -46,21 +32,19 @@ const QuizQuesCardAnsContainer = ({ansCheck}) => {
     },[clicked,answer])
 
 
-    
+    if(!state) return
 
     const value = {
-        submitHandler:submitHandler,
         clickHandler:clickHandler,
-        initialDisabled:initialDisabled,
-        inputFocus:inputFocus,
-        clicked:clicked,
+        clicked:clicked
     }
 
     if(state.currentQues === state.ques.length) return <></>
 
     return(
         <QuizCardContext.Provider value={value}>
-            <QuizQuesCard_Ans/>
+                <QuizQuesCard_Ans submitHandler={submitHandler} 
+                />
         </QuizCardContext.Provider>
     )
 }
