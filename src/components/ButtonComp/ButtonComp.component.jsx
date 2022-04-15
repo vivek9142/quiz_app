@@ -1,10 +1,11 @@
+import React from 'react';
 import { Button } from "react-bootstrap";
 import './ButtonComp.styles.scss';
 
-const ButtonComp = ({children,...props}) => {
+const ButtonComp = ({children,onClick}) => {
     return (
-        <Button className="button" {...props}>{children}</Button>
+        <Button className="button" onClick={onClick}>{children}</Button>
     )
 }
 
-export default ButtonComp;
+export default React.memo(ButtonComp);

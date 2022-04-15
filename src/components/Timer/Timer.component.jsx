@@ -19,6 +19,7 @@ const Timer = props => {
                 dispatch(quesActions.addTimeSpan(currentTime.current))
                 clearInterval(instanceTime);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch, domUnloading, instanceTime])
     
     const displayTime = useCallback((type)=>{
