@@ -1,39 +1,17 @@
-import { useState,useEffect,useRef, useCallback} from 'react';
+import { useState,useEffect, useCallback} from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { quesActions } from '../../redux/slice/slice';
+import useShowTime from '../../utils/useShowTime';
 
 import './Timer.styles.scss';
 
 const Timer = props => {
-    
+    const {instanceTime,timerFunc,currentTime,time} = useShowTime();
     const dispatch = useDispatch(); 
     const state = useSelector(state => state.ques);
     const currentSlide = state.currentQues;
 
-    const initState = { min: 0, sec: 0, timeInstance:null };
-
-    const [time, setTime] = useState(initState);
-    const currentTime = useRef();
-
     const [domUnloading, setDomUnloading] = useState(false);
-    let [instanceTime, setInstanceTime] = useState(null);
-
-    let timer = useRef(null);
-    
-    let timerFunc = useCallback(() => {
-      timer.current = setInterval(() => {
-        setTime((prevState) => {
-          if (prevState.sec < 59) return { ...prevState, sec: prevState.sec + 1 };
-          else if (prevState.sec === 59 && prevState.min < 59)
-            return { ...prevState, min: prevState.min + 1, sec: 0 };
-        })
-      }, 1000);
-      
-      if(typeof instanceTime ==='object')
-      setInstanceTime(timer.current);
-    },[instanceTime]);
-    
-    currentTime.current = time;
     
     useEffect(() => {
         return () => {
