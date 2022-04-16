@@ -1,4 +1,4 @@
-import { useState,useEffect, useCallback} from 'react';
+import { useState,useEffect} from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { quesActions } from '../../redux/slice/slice';
 import useShowTime from '../../utils/useShowTime';
@@ -6,7 +6,7 @@ import useShowTime from '../../utils/useShowTime';
 import './Timer.styles.scss';
 
 const Timer = props => {
-    const {instanceTime,timerFunc,currentTime,time} = useShowTime();
+    const {instanceTime,timerFunc,currentTime,displayTime} = useShowTime();
     const dispatch = useDispatch(); 
     const state = useSelector(state => state.ques);
     const currentSlide = state.currentQues;
@@ -22,12 +22,6 @@ const Timer = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch, domUnloading, instanceTime])
     
-    const displayTime = useCallback((type)=>{
-      if(type === 'min')
-      return `${Math.floor(time.min / 10) === 0 ? "0" + time.min : time.min}`
-      else if(type === 'sec')
-      return `${Math.floor(time.sec / 10) === 0 ? "0" + time.sec : time.sec}`
-    },[time])
 
     if(currentSlide===0 && typeof instanceTime==='object')
       timerFunc();
