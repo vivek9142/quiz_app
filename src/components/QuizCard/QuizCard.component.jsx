@@ -1,8 +1,8 @@
 import React from "react";
 import QuizStart from "../QuizStart/QuizStart.component";
 import { useSelector } from "react-redux";
-
 import './QuizCard.styles.scss';
+import LoadingScreen from "../Loader/LoadingScreen.component";
 
 const QuizQuesCard = React.lazy(()=>  import(/*webpackPrefetch:true*/ "../QuizQuesCard/main/QuizQuesCard.component"));
 const QuizEndCard = React.lazy(()=>  import(/*webpackPrefetch:true*/ "../QuizEndCard/QuizEndCard.component"));
@@ -15,13 +15,13 @@ const QuizCard = (props) => {
             {currentQues === -1 && (<QuizStart/>)}
             
             {((currentQues === 0 || currentQues !== -1) && (currentQues < ques.length)) && 
-            (<React.Suspense fallback={<p>Loading...</p>}>
+            (<React.Suspense fallback={<LoadingScreen/>}>
                 <QuizQuesCard/>
             </React.Suspense>
             )}
 
             {currentQues === ques.length && 
-            (<React.Suspense fallback={<p>Loading...</p>}>
+            (<React.Suspense fallback={<LoadingScreen/>}>
                 <QuizEndCard/>
             </React.Suspense>
             )}
