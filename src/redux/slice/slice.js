@@ -1,7 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { getQues } from '../actions/action';
 
-const initialState = {
+const localStorageStore = localStorage.getItem('storeData');
+
+const initialState = localStorageStore ? JSON.parse(localStorageStore) : {
     loading:false,
     error:'',
     ques:[],

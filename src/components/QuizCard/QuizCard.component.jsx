@@ -10,8 +10,15 @@ const QuizQuesCard = React.lazy(()=>  import(/*webpackPrefetch:true*/ "../QuizQu
 const QuizEndCard = React.lazy(()=>  import(/*webpackPrefetch:true*/ "../QuizEndCard/QuizEndCard.component"));
 
 const QuizCard = (props) => {
-    const {ques,currentQues} = useSelector(state => state.ques); 
+    const state = useSelector(state => state); 
+    const {ques,currentQues} = state.ques;
 
+    React.useEffect(()=>{
+        return async()=>{
+         await localStorage.setItem('storeData',JSON.stringify({...state.ques}));
+        }
+    },[currentQues]);
+    
     return (
         <div className="quiz__card--container">
             {currentQues === -1 && 
