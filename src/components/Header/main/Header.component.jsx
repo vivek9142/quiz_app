@@ -3,6 +3,7 @@ import useNameDimension from '../../../utils/useNameDimension';
 import Logo from '../../../assets/img/logo.png';
 import { Navbar,Container } from 'react-bootstrap';
 import './Header.styles.scss';
+import LoadingScreen from '../../Loader/LoadingScreen.component';
 
 const HeaderSidebar = React.lazy(()=> import('../HeaderSidebar/HeaderSidebar.component'));
 const NavBarCollapse = React.lazy(()=> import('../NavBarCollapse/NavBarCollapse.component'));
@@ -20,13 +21,13 @@ const Header  = () => {
                       </Navbar.Brand>
                       
                       {(['xs','sm'].includes(dimension)) && 
-                      (<React.Suspense fallback={<h1>Loading...</h1>}>
+                      (<React.Suspense fallback={<LoadingScreen/>}>
                         <HeaderSidebar/>
                       </React.Suspense>)}
                       
                       
                       {(['md','lg','xl'].includes(dimension)) && 
-                      (<React.Suspense fallback={<h1>Loading...</h1>}>
+                      (<React.Suspense fallback={<LoadingScreen/>}>
                       <NavBarCollapse/>
                       </React.Suspense>)}
 

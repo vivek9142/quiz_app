@@ -1,10 +1,11 @@
 import React from "react";
-import QuizStart from "../QuizStart/QuizStart.component";
+// import QuizStart from "../QuizStart/QuizStart.component";
 import { useSelector } from "react-redux";
 import './QuizCard.styles.scss';
 import LoadingScreen from "../Loader/LoadingScreen.component";
 import ErrorBoundary from "../../Error Boundary/ErrorBoundary";
 
+const QuizStart = React.lazy(()=>  import(/*webpackPrefetch:true*/ "../QuizStart/QuizStart.component"));
 const QuizQuesCard = React.lazy(()=>  import(/*webpackPrefetch:true*/ "../QuizQuesCard/main/QuizQuesCard.component"));
 const QuizEndCard = React.lazy(()=>  import(/*webpackPrefetch:true*/ "../QuizEndCard/QuizEndCard.component"));
 
@@ -15,7 +16,9 @@ const QuizCard = (props) => {
         <div className="quiz__card--container">
             {currentQues === -1 && 
             (<ErrorBoundary>
+                <React.Suspense fallback={<LoadingScreen/>}>
                     <QuizStart/>
+                </React.Suspense>
             </ErrorBoundary>
             )}
             
